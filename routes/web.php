@@ -24,3 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+Route::resource('tags', 'TagController', ['except' => ['show']]);
