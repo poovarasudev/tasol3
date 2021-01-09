@@ -25,4 +25,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::resource('tags', 'TagController', ['except' => ['show']]);
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('tags', 'App\Http\Controllers\TagController', ['except' => ['show']]);
+    Route::get('get-tags','App\Http\Controllers\TagController@getTags')->name('get.tags');
+});

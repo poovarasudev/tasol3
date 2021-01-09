@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TagRequest;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class TagController extends Controller
 {
@@ -19,6 +20,25 @@ class TagController extends Controller
     {
         $tags = Tag::get();
         return view($this->baseViewDirectory . 'index', compact('tags'));
+    }
+
+    /**
+     * Get tags.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getTags()
+    {
+        return DataTables::of(Tag::all())
+            ->addColumn('action', function ($tag) {
+                return '<div class="form-inline">
+                    <a type="button" class="btn mb-2 btn-outline-link" href=' . url('tags/' . $tag->id . '/edit') . '>
+                    <span class="fe fe-edit fe-16"></span></a>
+                   ' . deleteButtonWithFormSubmit('tags/' . $tag->id, 'Tag') . '
+                </div>';
+            })
+            ->make('true');
     }
 
     /**
