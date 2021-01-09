@@ -30,10 +30,10 @@
         </div>
         <div class="form-group">
             <label for="password" class="sr-only">Confirm Password</label>
-            <input type="password" id="password-confirm" name="password-confirm" class="form-control form-control-lg"
-                   placeholder="Password Confirm" required autocomplete="new-password">
+            <input type="password" id="password-confirm" name="password_confirmation" class="form-control form-control-lg"
+                   placeholder="Confirm Password" required autocomplete="new-password">
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         <hr>
         <div class="text-center">
             <a class="mx-1">Already have an account ?</a>
