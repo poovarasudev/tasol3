@@ -23,7 +23,7 @@ class AdminSeeder extends Seeder
                 'password' => 'password',
                 'phone' => '8148406208',
                 'gender' => GENDER_MALE,
-                'team_id' => Team::where('name', 'PHP Team')->first()->id,
+                'team_id' => Team::where('name', 'PHP')->first()->id,
                 'breakfast' => true,
                 'lunch' => true,
             ]
