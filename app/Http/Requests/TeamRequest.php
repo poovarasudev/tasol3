@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TagRequest extends FormRequest
+class TeamRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,10 @@ class TagRequest extends FormRequest
      */
     public function rules()
     {
+        $teamId = $this->route('teamId');
         return [
-            'name' => 'required|min:4|max:30',
+            'name' => 'required|unique:teams,name,' . $teamId . ',id,deleted_at,NULL|min:2|max:30',
+            'description' => 'required|min:5|max:200',
         ];
     }
 }

@@ -439,9 +439,6 @@
 </script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-{{-- Common Delete Script --}}
-@include('common_delete_script')
-
 @yield('script')
 </body>
 </html>
