@@ -17,9 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'verify' => false,
+]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/contact-admin', [App\Http\Controllers\HomeController::class, 'contactAdmin'])->name('contact.admin');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

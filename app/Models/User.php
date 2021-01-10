@@ -78,4 +78,14 @@ class User extends Authenticatable
             }
         }
     }
+
+    /**
+     * Get all users with create new user permission
+     *
+     * @return
+     */
+    public static function getUsersWithCreateNewUserPermissions()
+    {
+        return self::with('team')->role(SUPER_ADMIN_ROLE)->get();
+    }
 }

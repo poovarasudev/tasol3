@@ -25,14 +25,14 @@
                    placeholder="Password" required autocomplete="current-password">
         </div>
         <div class="checkbox mb-3">
-            <label><input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>Remember
-                Me</label>
+            <label><input type="checkbox" name="remember" id="remember"
+                    {{ old('remember') ? 'checked' : '' }}>  Remember Me</label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         <hr>
         <div class="text-center">
             <a class="mx-1">Don't have Account?</a>
-            <a href="{{ route('register') }}">Register Now!</a>
+            <a href="{{ route('contact.admin') }}">Click Here!</a>
             <a href="{{ route('password.request') }}"><p>Forgot Password?</p></a>
         </div>
         <p class="mt-5 mb-3 text-muted">© 2020</p>
