@@ -6,6 +6,7 @@ define('COPYRIGHT_NAME', 'Poovarasu');
 // Gender for profile & photo get attr
 define('GENDER_MALE', 'Male');
 define('GENDER_FEMALE', 'Female');
+define('GENDER_OTHER', 'Other');
 
 // Menu Type
 define('BREAKFAST_MENU', 'breakfast');
