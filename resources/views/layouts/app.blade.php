@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Icons CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/feather.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/dropzone.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/uppy.min.css') }}">
@@ -35,6 +36,27 @@
     <main role="main" class="main-content">
         <div class="container-fluid">
             <div class="row justify-content-center">
+                @if (session('error'))
+                    <div class="col-12 mb-4">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
+
+                @if (session('status'))
+                    <div class="col-12 mb-4">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
 
                 @yield('content')
 
@@ -180,6 +202,8 @@
 <script src="{{ asset('assets/js/datamaps-zoomto.js') }}"></script>
 <script src="{{ asset('assets/js/datamaps.custom.js') }}"></script>
 <script src="{{ asset('assets/js/Chart.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
     /* defind global options */
     Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
@@ -413,5 +437,8 @@
     gtag('js', new Date());
     gtag('config', 'UA-56159088-1');
 </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@yield('script')
 </body>
 </html>

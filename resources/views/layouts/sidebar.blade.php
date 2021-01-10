@@ -18,12 +18,28 @@
             </a>
         </div>
 
-        <p class="text-muted nav-heading mt-4 mb-1">
-            <span>Components</span>
-        </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="widgets.html">
+                <a class="nav-link" href="{{ url('/dashboard') }}">
+                    <i class="fe fe-home fe-16"></i>
+                    <span class="ml-3 item-text">Dashboard</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="{{ route('teams.index') }}">
+                    <i class="fe fe-tag fe-16"></i>
+                    <span class="ml-3 item-text">Teams</span>
+                </a>
+            </li>
+        </ul>
+
+        <p class="text-muted nav-heading mt-4 mb-1"><span>Components</span></p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a class="nav-link" href="">
                     <i class="fe fe-layers fe-16"></i>
                     <span class="ml-3 item-text">Widgets</span>
                 </a>

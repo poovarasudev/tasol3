@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,11 +17,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'phone', 'gender', 'image', 'breakfast', 'lunch', 'team_id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,4 +37,43 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Check the user is super admin.
+     *
+     * @return bool
+     */
+    public function isSuperAdmin()
+    {
+        return $this->hasRole(SUPER_ADMIN_ROLE);
+    }
+
+    /**
+     * User belongs to a Team
+     *
+     * @return BelongsTo
+     */
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id', 'id');
+    }
+
+    /**
+     * Get the user's photo.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getPhotoAttribute($value)
+    {
+        if ($this->image) {
+            return $value;
+        } else {
+            if ($this->gender == GENDER_MALE) {
+                return asset('assets/custom/user-default-image/male.webp');
+            } else {
+                return asset('assets/custom/user-default-image/female.webp');
+            }
+        }
+    }
 }

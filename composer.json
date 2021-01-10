@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.1"
+        "laravel/ui": "^3.1",
+        "yajra/laravel-datatables-oracle": "^9.15"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -39,7 +40,13 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Http/helpers.php",
+            "app/Http/constants.php",
+            "app/Http/config-helpers.php",
+            "app/Http/blade-helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
