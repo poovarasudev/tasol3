@@ -6,9 +6,9 @@ function requiredSpan() {
     return new HtmlString('<span class="mandatory" style="color: red;">*</span>');
 }
 
-function getYesOrNoButton($value) {
-    $text = $value ? '<span class="badge bg-success">Yes</span>' : '<span class="badge bg-danger">No</span>';
-    return new HtmlString($text);
+function getYesOrNoBadge($value) {
+    $badge = $value ? '<button class="btn badge-success btn-sm">Yes</button>' : '<button class="btn badge-danger btn-sm">No</button>';
+    return new HtmlString($badge);
 }
 
 function setActive($path, $active = 'active')
@@ -20,7 +20,6 @@ function setActive($path, $active = 'active')
  * It will create a edit button.
  *
  * @param $url
- * @param $toolTip
  * @return string
  */
 function editButton($url)
@@ -33,11 +32,23 @@ function editButton($url)
  * It will create a edit button.
  *
  * @param $url
- * @param $toolTip
+ * @param $name
  * @return string
  */
 function deleteButton($url, $name)
 {
     return '<a type="button" class="btn mb-2 btn-outline-link" href="javascript:void(0);" onclick="commonDelete(\'' . $url . '\', \'' . $name . '\')">
                     <span class="fe fe-trash fe-16"></span></a>';
+}
+
+/**
+ * It will create a view button.
+ *
+ * @param $url
+ * @return string
+ */
+function viewButton($url)
+{
+    return '<a type="button" class="btn mb-2 btn-outline-link" href="' . $url . '">
+                    <span class="fe fe-eye fe-16"></span></a>';
 }

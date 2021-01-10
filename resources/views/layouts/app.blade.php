@@ -25,6 +25,8 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/app-light.css') }}" id="lightTheme">
     <link rel="stylesheet" href="{{ asset('assets/css/app-dark.css') }}" id="darkTheme" disabled>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{{ asset('assets/custom/custom-styles.css') }}" type="text/css">
 </head>
 <body class="vertical  light  ">
 <div class="wrapper">
