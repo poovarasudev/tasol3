@@ -52,3 +52,7 @@ function viewButton($url)
     return '<a type="button" class="btn mb-2 btn-outline-link" href="' . $url . '">
                     <span class="fe fe-eye fe-16"></span></a>';
 }
+
+function formattedPermissionName($name) {
+    return ucwords(str_replace('_', ' ', str_replace('.', ' - ', $name)));
+}

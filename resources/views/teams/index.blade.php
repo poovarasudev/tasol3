@@ -8,11 +8,13 @@
             <div class="col">
                 <h2 class="page-title">Teams</h2>
             </div>
-            <div class="col-auto">
-                <a type="button" class="btn btn-primary text-white" href="{{ route('teams.create') }}">
-                    <span class="fe fe-plus fe-16 mr-3"></span>Add Team
-                </a>
-            </div>
+            @can('teams.create')
+                <div class="col-auto">
+                    <a type="button" class="btn btn-primary text-white" href="{{ route('teams.create') }}">
+                        <span class="fe fe-plus fe-16 mr-3"></span>Add Team
+                    </a>
+                </div>
+            @endcan
         </div>
         <div class="row my-4">
             <div class="col-md-12">

@@ -50,7 +50,7 @@ class TeamController extends Controller
      */
     public function edit($teamId)
     {
-        $team = Team::findOrFail($teamId);
+        $team = Team::whereNotIn('name', CONSTANT_TEAMS)->findOrFail($teamId);
         return view($this->baseViewDirectory . 'edit', compact('team'));
     }
 
@@ -63,7 +63,7 @@ class TeamController extends Controller
      */
     public function update(TeamRequest $request, $teamId)
     {
-        $team = Team::findOrFail($teamId);
+        $team = Team::whereNotIn('name', CONSTANT_TEAMS)->findOrFail($teamId);
         $team->update($request->only(['name', 'description']));
         return redirect('/teams')->with('status', 'Team Updated Successfully!');
     }
@@ -99,9 +99,18 @@ class TeamController extends Controller
     {
         return DataTables::of(Team::all())
             ->addColumn('action', function ($team) {
-                return '<div class="form-inline justify-content-center">' . editButton(route("teams.edit", $team->id)) .
-                    deleteButton(route("teams.delete", $team->id), $team->name) .
-                    '</div>';
+                $buttons = '';
+                if (!in_array($team->name, CONSTANT_TEAMS)) {
+                    if (auth()->user()->can('teams.edit')) {
+                        $buttons .= editButton(route("teams.edit", $team->id));
+                    }
+                    if (auth()->user()->can('teams.delete')) {
+                        $buttons .= deleteButton(route("teams.delete", $team->id), $team->name);
+                    }
+                } else {
+                    $buttons = '-';
+                }
+                return '<div class="form-inline justify-content-center">' . $buttons . '</div>';
             })
             ->make('true');
     }

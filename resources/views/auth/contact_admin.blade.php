@@ -23,7 +23,8 @@
     </div>
 
     <div class="footer pt-32">
-        <p class="text-center">Copyright &copy; {{ COPYRIGHT_NAME }} <script type="text/javascript">document.write( new Date().getFullYear() );</script></p>
+{{--        <p class="text-center">© 2020<script type="text/javascript">document.write( new Date().getFullYear() );</script></p>--}}
+        <p class="text-center">© 2020</p>
     </div>
 </div>
 </body>

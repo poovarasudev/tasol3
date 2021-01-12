@@ -29,11 +29,11 @@
                         <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="email">Email</label>
-                                <input type="email" id="gender" class="form-control" disabled value="{{ $user->email }}">
+                                <input type="email" id="email" class="form-control" disabled value="{{ $user->email }}">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="gender">Gender</label>
-                                <input type="email" id="gender" class="form-control" disabled value="{{ $user->gender }}">
+                                <input type="text" id="gender" class="form-control" disabled value="{{ $user->gender }}">
                             </div>
                             <div class="form-group mb-3 custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" id="breakfast" disabled @if($user->breakfast) checked @endif>

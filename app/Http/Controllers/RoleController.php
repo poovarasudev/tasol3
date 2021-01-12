@@ -6,9 +6,13 @@ use App\Http\Requests\RoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class RoleController extends Controller
 {
+    public $baseViewDirectory = 'roles.';
+
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +20,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::withCount('permissions')->get();
-        $totalPermissionCount = Permission::count();
-        return view('cruds.roles.index', compact('roles', 'totalPermissionCount'));
+        return view($this->baseViewDirectory . 'index');
     }
 
     /**
@@ -28,10 +30,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $role = null;
-        $url = '/roles';
         $permissions = Permission::all()->groupBy('group');
-        return view('cruds.roles.create_and_edit', compact('role', 'url', 'permissions'));
+        return view($this->baseViewDirectory . 'create', compact('permissions'));
     }
 
     /**
@@ -46,9 +46,12 @@ class RoleController extends Controller
             $input = $request->only('name');
             $input['guard_name'] = 'web';
             $role = Role::create($input);
-            $permissions = Permission::whereIn('id', $request->get('permission_ids'))->get();
-            $role->syncPermissions($permissions);
-            return redirect('/roles')->with('success', 'Role Created Successfully!');
+            $permissionId = $request->get('permission_ids');
+            if ($permissionId && !isEmptyArray($permissionId)) {
+                $permissions = Permission::whereIn('id', $permissionId)->get();
+                $role->syncPermissions($permissions);
+            }
+            return redirect('/roles')->with('status', 'Role Created Successfully!');
         } catch (\Throwable $exception) {
             return redirect('/roles')->with('error', 'Unable to Create Role!');
         }
@@ -62,8 +65,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = Role::with('permissions')->findOrFail($id);
-        return view('cruds.roles.view', compact('role'));
+        $role = Role::where('name', '!=', SUPER_ADMIN_ROLE)->with('permissions')->findOrFail($id);
+        return view($this->baseViewDirectory . 'show', compact('role'));
     }
 
     /**
@@ -75,9 +78,8 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::where('name', '!=', SUPER_ADMIN_ROLE)->with('permissions')->findOrFail($id);
-        $url = '/roles/' . $id;
         $permissions = Permission::all()->groupBy('group');
-        return view('cruds.roles.create_and_edit', compact('role', 'url', 'permissions'));
+        return view($this->baseViewDirectory . 'edit', compact('role', 'permissions'));
     }
 
     /**
@@ -93,7 +95,8 @@ class RoleController extends Controller
             $role = Role::where('name', '!=', SUPER_ADMIN_ROLE)->findOrFail($id);
             $input = $request->only(['name']);
             $role->update($input);
-            $permissions = Permission::whereIn('id', $request->get('permission_ids'))->get();
+            $permissions = $request->get('permission_ids') ?? [];
+            $permissions = Permission::whereIn('id', $permissions)->get();
             $role->syncPermissions($permissions);
             return redirect('/roles')->with('success', 'Role Updated Successfully!');
         } catch (\Throwable $exception) {
@@ -123,5 +126,39 @@ class RoleController extends Controller
         } catch (\Throwable $exception) {
             return response()->json(['action' => 'error', 'message' => 'Unable to delete Role'], 500);
         }
+    }
+
+    /**
+     * Get Users list for Datatable
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function getRoles(Request $request)
+    {
+        $totalPermissionCount = Permission::count();
+        return DataTables::eloquent(Role::withCount('permissions'))
+            ->editColumn('permissions_count', function ($role) use ($totalPermissionCount) {
+                return ($role->permissions_count == $totalPermissionCount || $role->isSuperAdmin()) ? 'All' : $role->permissions_count;
+            })
+            ->addColumn('action', function ($role) {
+                $buttons = '';
+                if (!$role->isSuperAdmin()) {
+                    if (auth()->user()->can('roles.view')) {
+                        $buttons .= viewButton(route("roles.show", $role->id));
+                    }
+                    if (auth()->user()->can('roles.edit')) {
+                        $buttons .= editButton(route("roles.edit", $role->id));
+                    }
+                    if (auth()->user()->can('roles.delete')) {
+                        $buttons .= deleteButton(route("roles.delete", $role->id), $role->name);
+                    }
+                } else {
+                    $buttons = '-';
+                }
+                return '<div class="form-inline justify-content-center">' . $buttons . '</div>';
+            })
+            ->make(true);
     }
 }
