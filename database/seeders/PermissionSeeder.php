@@ -35,10 +35,10 @@ class PermissionSeeder extends Seeder
             ['name' => 'roles.delete', 'group' => PERMISSION_GROUP_ROLE, 'guard_name' => 'web'],
 
             // Assign Role CURD
-            ['name' => 'assign_roles.index', 'group' => PERMISSION_GROUP_ASSIGN_ROLE, 'guard_name' => 'web'],
-            ['name' => 'assign_roles.create', 'group' => PERMISSION_GROUP_ASSIGN_ROLE, 'guard_name' => 'web'],
-            ['name' => 'assign_roles.edit', 'group' => PERMISSION_GROUP_ASSIGN_ROLE, 'guard_name' => 'web'],
-            ['name' => 'assign_roles.delete', 'group' => PERMISSION_GROUP_ASSIGN_ROLE, 'guard_name' => 'web'],
+            ['name' => 'assign_role.index', 'group' => PERMISSION_GROUP_ASSIGN_ROLE, 'guard_name' => 'web'],
+            ['name' => 'assign_role.create', 'group' => PERMISSION_GROUP_ASSIGN_ROLE, 'guard_name' => 'web'],
+            ['name' => 'assign_role.edit', 'group' => PERMISSION_GROUP_ASSIGN_ROLE, 'guard_name' => 'web'],
+            ['name' => 'assign_role.delete', 'group' => PERMISSION_GROUP_ASSIGN_ROLE, 'guard_name' => 'web'],
         ];
 
         foreach ($permissions as $permission) {

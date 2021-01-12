@@ -64,4 +64,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::patch('{roleId}', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.update')->middleware('can:roles.edit');
         Route::delete('{roleId}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.delete')->middleware('can:roles.delete');
     });
+
+    // Assign Roles CRUD
+    Route::group(['prefix' => 'assign-role'], function () {
+        Route::get('', [App\Http\Controllers\AssignRoleController::class, 'index'])->name('assign_role.index')->middleware('can:assign_role.index');
+        Route::get('get-assigned-roles', [App\Http\Controllers\AssignRoleController::class, 'getAssignedRoles'])->name('assign_role.datatable')->middleware('can:roles.index');
+        Route::get('create', [App\Http\Controllers\AssignRoleController::class, 'create'])->name('assign_role.create')->middleware('can:assign_role.create');
+        Route::post('', [App\Http\Controllers\AssignRoleController::class, 'store'])->name('assign_role.store')->middleware('can:assign_role.create');
+        Route::get('{userId}/edit', [App\Http\Controllers\AssignRoleController::class, 'edit'])->name('assign_role.edit')->middleware('can:assign_role.edit');
+        Route::patch('{userId}', [App\Http\Controllers\AssignRoleController::class, 'update'])->name('assign_role.update')->middleware('can:assign_role.edit');
+        Route::delete('{userId}', [App\Http\Controllers\AssignRoleController::class, 'destroy'])->name('assign_role.delete')->middleware('can:assign_role.delete');
+    });
 });

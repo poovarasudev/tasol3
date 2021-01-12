@@ -56,3 +56,7 @@ function viewButton($url)
 function formattedPermissionName($name) {
     return ucwords(str_replace('_', ' ', str_replace('.', ' - ', $name)));
 }
+
+function getSingularOrPlural($name, $count) {
+    return ($count > 0) ? ($name . 's') : $name;
+}
