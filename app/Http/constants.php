@@ -16,6 +16,8 @@ define('LUNCH_MENU', 'lunch');
 define('SUPER_ADMIN_ROLE', 'Super Admin');
 define('PERMISSION_GROUP_USER', 'User');
 define('PERMISSION_GROUP_TEAM', 'Team');
+define('PERMISSION_GROUP_ROLE', 'Role');
+define('PERMISSION_GROUP_ASSIGN_ROLE', 'Assign Role');
 
 // Menu Type
 define('TEAM_GUEST', 'Guest');

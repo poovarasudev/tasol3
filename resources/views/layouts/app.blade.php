@@ -224,30 +224,27 @@
 <script src="{{ asset('assets/js/uppy.min.js') }}"></script>
 <script src="{{ asset('assets/js/quill.min.js') }}"></script>
 <script>
-    $('.select2').select2(
-        {
-            theme: 'bootstrap4',
-        });
-    $('.select2-multi').select2(
-        {
-            multiple: true,
-            theme: 'bootstrap4',
-        });
-    $('.drgpicker').daterangepicker(
-        {
-            singleDatePicker: true,
-            timePicker: false,
-            showDropdowns: true,
-            locale:
-                {
-                    format: 'MM/DD/YYYY'
-                }
-        });
-    $('.time-input').timepicker(
-        {
-            'scrollDefault': 'now',
-            'zindex': '9999' /* fix modal open */
-        });
+    $('.select2').select2({
+        theme: 'bootstrap4'
+    });
+    $('.select2-multi').select2({
+        multiple: true,
+        theme: 'bootstrap4',
+        placeholder: "Please select a value"
+    });
+    $('.drgpicker').daterangepicker({
+        singleDatePicker: true,
+        timePicker: false,
+        showDropdowns: true,
+        locale:
+            {
+                format: 'MM/DD/YYYY'
+            }
+    });
+    $('.time-input').timepicker({
+        'scrollDefault': 'now',
+        'zindex': '9999' /* fix modal open */
+    });
     /** date range picker */
     if ($('.datetimes').length)
     {

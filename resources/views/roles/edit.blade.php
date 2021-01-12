@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Update Team')
+@section('title', 'Update Role')
 
 @section('content')
     <div class="col-12">
-        <h2 class="page-title">Update Team</h2>
+        <h2 class="page-title">Update Role</h2>
         @include('common.common_validation_error_script')
         <div class="card shadow mb-4">
-            <form method="POST" action="{{ route('teams.update', $team->id) }}">
+            <form method="POST" action="{{ route('roles.update', $role->id) }}">
                 {!! csrf_field() !!}
                 @method('PATCH')
                 <div class="card-header">
-                    <strong class="card-title">Update '{{ $team->name }}'</strong>
+                    <strong class="card-title">Update '{{ $role->name }}'</strong>
                 </div>
-                @include('teams.common_input_fields', ['btn' => 'Update', 'backUrl' => route('teams.index')])
+                @include('roles.common_input_fields', ['btn' => 'Update', 'backUrl' => route('roles.index')])
             </form>
         </div>
     </div>

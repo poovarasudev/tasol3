@@ -146,10 +146,18 @@ class UserController extends Controller
                 return getYesOrNoBadge($user->lunch);
             })
             ->addColumn('action', function ($user) {
-                return '<div class="form-inline justify-content-center">' . viewButton(route("users.show", $user->id)) .
-                    editButton(route("users.edit", $user->id)) .
-                    deleteButton(route("users.delete", $user->id), $user->name) .
-                    '</div>';
+                $button = '';
+                if (auth()->user()->can('users.view')) {
+                    $button .= viewButton(route("users.show", $user->id));
+                }
+                if (auth()->user()->can('users.edit')) {
+                    $button .= editButton(route("users.edit", $user->id));
+                }
+                if (auth()->user()->can('users.delete')) {
+                    $button .= deleteButton(route("users.delete", $user->id), $user->name);
+                }
+                $button = ($button != '') ? $button : '-';
+                return '<div class="form-inline justify-content-center">' . $button . '</div>';
             })
             ->make(true);
     }

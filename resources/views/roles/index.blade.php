@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'Teams')
+@section('title', 'Roles')
 
 @section('content')
     <div class="col-12">
         <div class="row align-items-center my-3">
             <div class="col">
-                <h2 class="page-title">Teams</h2>
+                <h2 class="page-title">Roles</h2>
             </div>
-            @can('teams.create')
+            @can('roles.create')
                 <div class="col-auto">
-                    <a type="button" class="btn btn-primary text-white" href="{{ route('teams.create') }}">
-                        <span class="fe fe-plus fe-16 mr-3"></span>Add Team
+                    <a type="button" class="btn btn-primary text-white" href="{{ route('roles.create') }}">
+                        <span class="fe fe-plus fe-16 mr-3"></span>Add Role
                     </a>
                 </div>
             @endcan
@@ -23,8 +23,8 @@
                         <table class="table datatables" id="datatable-id">
                             <thead>
                             <tr>
-                                <th><strong>Name</strong></th>
-                                <th><strong>Description</strong></th>
+                                <th><strong>Role Name</strong></th>
+                                <th><strong>Permission Count</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                             </thead>
@@ -42,15 +42,19 @@
             $('#datatable-id').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('teams.datatable') !!}',
+                ajax: '{!! route('roles.datatable') !!}',
                 columns: [
                     {data: 'name', name: 'name'},
-                    {data: 'description', name: 'description'},
+                    {data: 'permissions_count', name: 'permissions_count', searchable: false, orderable: false},
                     {data: 'action', name: 'action', searchable: false, orderable: false},
                 ],
                 columnDefs: [
                     {
                         targets: -1,
+                        className: 'text-center'
+                    },
+                    {
+                        targets: -2,
                         className: 'text-center'
                     }
                 ],

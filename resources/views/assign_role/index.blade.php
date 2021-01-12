@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'Teams')
+@section('title', 'User\'s Role')
 
 @section('content')
     <div class="col-12">
         <div class="row align-items-center my-3">
             <div class="col">
-                <h2 class="page-title">Teams</h2>
+                <h2 class="page-title">User's Role</h2>
             </div>
-            @can('teams.create')
+            @can('assign_role.create')
                 <div class="col-auto">
-                    <a type="button" class="btn btn-primary text-white" href="{{ route('teams.create') }}">
-                        <span class="fe fe-plus fe-16 mr-3"></span>Add Team
+                    <a type="button" class="btn btn-primary text-white" href="{{ route('assign_role.create') }}">
+                        <span class="fe fe-plus fe-16 mr-3"></span>Attach Role
                     </a>
                 </div>
             @endcan
@@ -23,8 +23,8 @@
                         <table class="table datatables" id="datatable-id">
                             <thead>
                             <tr>
-                                <th><strong>Name</strong></th>
-                                <th><strong>Description</strong></th>
+                                <th><strong>User Name</strong></th>
+                                <th><strong>Role Name</strong></th>
                                 <th><strong>Action</strong></th>
                             </tr>
                             </thead>
@@ -42,10 +42,10 @@
             $('#datatable-id').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('teams.datatable') !!}',
+                ajax: '{!! route('assign_role.datatable') !!}',
                 columns: [
                     {data: 'name', name: 'name'},
-                    {data: 'description', name: 'description'},
+                    {data: 'role_name', name: 'role_name'},
                     {data: 'action', name: 'action', searchable: false, orderable: false},
                 ],
                 columnDefs: [

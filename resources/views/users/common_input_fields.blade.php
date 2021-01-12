@@ -16,7 +16,7 @@
                 <select class="form-control select2" id="team-id" name="team_id" required>
                     <option value="">Please select a Team</option>
                     @foreach($teams as $team)
-                        <option value="{{ $team->id }}" {{ (old('team_id') ?? ($user->team_id) == $team->id) ? 'selected' : '' }}>{{ $team->name }}</option>
+                        <option value="{{ $team->id }}" {{ (old('team_id') ?? (optional($user)->team_id) == $team->id) ? 'selected' : '' }}>{{ $team->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -47,9 +47,9 @@
                 <label for="gender">Gender {{ requiredSpan() }}</label>
                 <select class="form-control select2" id="gender" name="gender" required>
                     <option value="">Please select a Gender</option>
-                    <option value="{{ GENDER_MALE }}" {{ ((old('gender') ?? $user->gender) == GENDER_MALE) ? 'selected' : '' }}>{{ GENDER_MALE }}</option>
-                    <option value="{{ GENDER_FEMALE }}" {{ ((old('gender') ?? $user->gender) == GENDER_FEMALE) ? 'selected' : '' }}>{{ GENDER_FEMALE }}</option>
-                    <option value="{{ GENDER_OTHER }}" {{ ((old('gender') ?? $user->gender) == GENDER_OTHER) ? 'selected' : '' }}>{{ GENDER_OTHER }}</option>
+                    <option value="{{ GENDER_MALE }}" {{ ((old('gender') ?? optional($user)->gender) == GENDER_MALE) ? 'selected' : '' }}>{{ GENDER_MALE }}</option>
+                    <option value="{{ GENDER_FEMALE }}" {{ ((old('gender') ?? optional($user)->gender) == GENDER_FEMALE) ? 'selected' : '' }}>{{ GENDER_FEMALE }}</option>
+                    <option value="{{ GENDER_OTHER }}" {{ ((old('gender') ?? optional($user)->gender) == GENDER_OTHER) ? 'selected' : '' }}>{{ GENDER_OTHER }}</option>
                 </select>
             </div>
             <div class="form-group mb-3 text-right user-crud-btn-top-padding">

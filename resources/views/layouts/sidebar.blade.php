@@ -27,23 +27,49 @@
             </li>
         </ul>
 
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('teams.index') }}">
-                    <i class="fe fe-tag fe-16"></i>
-                    <span class="ml-3 item-text">Teams</span>
-                </a>
-            </li>
-        </ul>
+        @can('teams.index')
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100 {{ setActive(['teams', 'teams/*']) }}">
+                    <a class="nav-link" href="{{ route('teams.index') }}">
+                        <i class="fe fe-tag fe-16"></i>
+                        <span class="ml-3 item-text">Teams</span>
+                    </a>
+                </li>
+            </ul>
+        @endcan
 
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="{{ route('users.index') }}">
-                    <i class="fe fe-tag fe-16"></i>
-                    <span class="ml-3 item-text">Users</span>
-                </a>
-            </li>
-        </ul>
+        @can('users.index')
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100 {{ setActive(['users', 'users/*']) }}">
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        <i class="fe fe-tag fe-16"></i>
+                        <span class="ml-3 item-text">Users</span>
+                    </a>
+                </li>
+            </ul>
+        @endcan
+
+        @can('roles.index')
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100 {{ setActive(['roles', 'roles/*']) }}">
+                    <a class="nav-link" href="{{ route('roles.index') }}">
+                        <i class="fe fe-tag fe-16"></i>
+                        <span class="ml-3 item-text">Roles</span>
+                    </a>
+                </li>
+            </ul>
+        @endcan
+
+        @can('assign_role.index')
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100 {{ setActive(['assign_role', 'assign_role/*']) }}">
+                    <a class="nav-link" href="{{ route('assign_role.index') }}">
+                        <i class="fe fe-tag fe-16"></i>
+                        <span class="ml-3 item-text">Attach User + Role</span>
+                    </a>
+                </li>
+            </ul>
+        @endcan
 
         <p class="text-muted nav-heading mt-4 mb-1"><span>Components</span></p>
         <ul class="navbar-nav flex-fill w-100 mb-2">

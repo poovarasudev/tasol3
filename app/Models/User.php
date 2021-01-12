@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -75,5 +77,15 @@ class User extends Authenticatable
                 return asset('assets/custom/user-default-image/female.webp');
             }
         }
+    }
+
+    /**
+     * Get all users with create new user permission
+     *
+     * @return
+     */
+    public static function getUsersWithCreateNewUserPermissions()
+    {
+        return self::with('team')->role(SUPER_ADMIN_ROLE)->get();
     }
 }
