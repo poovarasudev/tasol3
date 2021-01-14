@@ -24,23 +24,14 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $userId = $this->route('userId') ?? null;
-        if ($this->request->has('old_password')) {
-            // TODO :: Need to check this.
-            return [
-                'old_password' => 'sometimes|required|min:7',
-                'new_password' => 'sometimes|required|min:8',
-                'confirm_password' => 'sometimes|required_with:new_password|min:8|same:new_password',
-            ];
-        } else {
-            return [
-                'name' => 'required|min:2|max:100',
-                'email' => 'required|email|unique:users,email,' . $userId . ',id,deleted_at,NULL',
-                'phone' => 'required|digits:10|unique:users,phone,' . $userId . ',id',
-                'password' => ($userId && $this->request->get('password')) ? 'required|min:6|max:15' : '',
-                'team_id' => 'required|numeric|exists:teams,id,deleted_at,NULL',
-                'gender' => 'required|in:'. GENDER_MALE . ',' . GENDER_FEMALE . ',' . GENDER_OTHER,
-            ];
-        }
+        return [
+            'name' => 'required|min:2|max:100',
+            'email' => 'required|email|unique:users,email,' . $userId . ',id,deleted_at,NULL',
+            'phone' => 'required|digits:10|unique:users,phone,' . $userId . ',id',
+            'password' => ($userId && $this->request->get('password')) ? 'required|min:6|max:15' : '',
+            'team_id' => 'required|numeric|exists:teams,id,deleted_at,NULL',
+            'gender' => 'required|in:'. GENDER_MALE . ',' . GENDER_FEMALE . ',' . GENDER_OTHER,
+        ];
     }
 
     /**

@@ -19,3 +19,11 @@ function isEmptyArray($array)
 {
     return count($array) == 0;
 }
+
+function formatTeamName($teamName)
+{
+    if (!stripos($teamName, 'team')) {
+        $teamName .= ' Team';
+    }
+    return $teamName;
+}

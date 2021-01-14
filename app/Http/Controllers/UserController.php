@@ -119,9 +119,9 @@ class UserController extends Controller
         try {
             $user = User::findOrFail($id);
             // TODO :: Need to add restriction for deleting user based on bill balance.
-//            if ($user->isSuperAdmin()) {
-//                return response()->json(['action' => 'error', 'message' => 'Super Admin users be deleted!!!'], 422);
-//            }
+            if ($user->isSuperAdmin()) {
+                return response()->json(['action' => 'error', 'message' => 'Super Admin users be deleted!!!'], 422);
+            }
             $user->delete();
             return response()->json(['action' => 'success', 'message' => 'User deleted successfully']);
         } catch (\Throwable $exception) {

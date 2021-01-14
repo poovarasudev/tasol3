@@ -60,3 +60,7 @@ function formattedPermissionName($name) {
 function getSingularOrPlural($name, $count) {
     return ($count > 0) ? ($name . 's') : $name;
 }
+
+function getYesOrNo($value) {
+    return $value ? 'Yes' : 'No';
+}
