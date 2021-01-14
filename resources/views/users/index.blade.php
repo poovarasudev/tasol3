@@ -23,7 +23,7 @@
                         <table class="table datatables" id="datatable-id">
                             <thead>
                             <tr>
-                                <th><strong>Id</strong></th>
+                                <th><strong>User Id</strong></th>
                                 <th><strong>Name</strong></th>
                                 <th><strong>Team</strong></th>
                                 <th><strong>Email</strong></th>
