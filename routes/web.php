@@ -75,4 +75,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::patch('{userId}', [App\Http\Controllers\AssignRoleController::class, 'update'])->name('assign_role.update')->middleware('can:assign_role.edit');
         Route::delete('{userId}', [App\Http\Controllers\AssignRoleController::class, 'destroy'])->name('assign_role.delete')->middleware('can:assign_role.delete');
     });
+
+    // Menus CRUD
+    Route::group(['prefix' => 'menus'], function () {
+        Route::get('', [App\Http\Controllers\MenuController::class, 'index'])->name('menus.index')->middleware('can:menus.index');
+        Route::get('get-menus', [App\Http\Controllers\MenuController::class, 'getMenus'])->name('menus.datatable')->middleware('can:menus.index');
+        Route::get('create', [App\Http\Controllers\MenuController::class, 'create'])->name('menus.create')->middleware('can:menus.create');
+        Route::post('', [App\Http\Controllers\MenuController::class, 'store'])->name('menus.store')->middleware('can:menus.create');
+        Route::get('{menuId}/edit', [App\Http\Controllers\MenuController::class, 'edit'])->name('menus.edit')->middleware('can:menus.edit');
+        Route::patch('{menuId}', [App\Http\Controllers\MenuController::class, 'update'])->name('menus.update')->middleware('can:menus.edit');
+        Route::delete('{menuId}', [App\Http\Controllers\MenuController::class, 'destroy'])->name('menus.delete')->middleware('can:menus.delete');
+    });
 });

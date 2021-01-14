@@ -52,7 +52,7 @@
                     <option value="{{ GENDER_OTHER }}" {{ ((old('gender') ?? optional($user)->gender) == GENDER_OTHER) ? 'selected' : '' }}>{{ GENDER_OTHER }}</option>
                 </select>
             </div>
-            <div class="form-group mb-3 text-right user-crud-btn-top-padding">
+            <div class="form-group mb-3 text-right crud-btn-top-padding">
                 <a href="{{ $backUrl }}" type="submit" class="btn btn-secondary">Cancel</a>
                 <button type="submit" class="btn btn-primary">{{ $btn }}</button>
             </div>
