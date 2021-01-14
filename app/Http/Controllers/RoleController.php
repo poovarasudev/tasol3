@@ -51,7 +51,7 @@ class RoleController extends Controller
                 $permissions = Permission::whereIn('id', $permissionId)->get();
                 $role->syncPermissions($permissions);
             }
-            return redirect('/roles')->with('status', 'Role Created Successfully!');
+            return redirect('/roles')->with('success', 'Role Created Successfully!');
         } catch (\Throwable $exception) {
             return redirect('/roles')->with('error', 'Unable to Create Role!');
         }

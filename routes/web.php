@@ -30,6 +30,11 @@ Route::get('/dashboard', function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
+
+    // Profile Routes
+    Route::view('profile', 'profile')->name('profile.show');
+    Route::post('profile', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.store');
+
     // Users CRUD
     Route::group(['prefix' => 'users'], function () {
         Route::get('', [App\Http\Controllers\UserController::class, 'index'])->name('users.index')->middleware('can:users.index');

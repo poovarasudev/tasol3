@@ -39,7 +39,7 @@ class TeamController extends Controller
     public function store(TeamRequest $request)
     {
         Team::create($request->only(['name', 'description']));
-        return redirect('/teams')->with('status', 'Team Created Successfully!');
+        return redirect('/teams')->with('success', 'Team Created Successfully!');
     }
 
     /**
@@ -65,7 +65,7 @@ class TeamController extends Controller
     {
         $team = Team::whereNotIn('name', CONSTANT_TEAMS)->findOrFail($teamId);
         $team->update($request->only(['name', 'description']));
-        return redirect('/teams')->with('status', 'Team Updated Successfully!');
+        return redirect('/teams')->with('success', 'Team Updated Successfully!');
     }
 
     /**

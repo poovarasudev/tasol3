@@ -9,6 +9,7 @@
         })
             .then((willDelete) => {
                 if (willDelete) {
+                    $(".page-loader").show();
                     $.ajax({
                         url: url,
                         method: 'delete',
@@ -16,6 +17,7 @@
                             '_token': '{{ csrf_token() }}'
                         },
                         success: function (response) {
+                            $(".page-loader").hide();
                             swal({
                                 title: name + " Deleted Successfully!",
                                 text: " ",
@@ -26,6 +28,7 @@
                             location.reload();
                         },
                         error: function (response) {
+                            $(".page-loader").hide();
                             var msg = response.responseJSON.message;
                             swal({
                                 title: "Warning!",

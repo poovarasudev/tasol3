@@ -36,6 +36,14 @@
     @include('layouts.sidebar')
 
     <main role="main" class="main-content">
+        <div class="page-loader">
+            <div class="loader">
+                <div class="stick1"></div>
+                <div class="stick2"></div>
+                <div class="stick3"></div>
+                <div class="stick4"></div>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="row justify-content-center">
                 @if (session('error'))
@@ -49,10 +57,10 @@
                     </div>
                 @endif
 
-                @if (session('status'))
+                @if (session('success'))
                     <div class="col-12 mb-4">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('status') }}
+                            {{ session('success') }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -425,16 +433,20 @@
 </script>
 <script src="{{ asset('assets/js/apps.js') }}"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+{{--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>--}}
 <script>
     window.dataLayer = window.dataLayer || [];
 
-    function gtag()
-    {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-56159088-1');
+    // function gtag()
+    // {
+    //     dataLayer.push(arguments);
+    // }
+    // gtag('js', new Date());
+    // gtag('config', 'UA-56159088-1');
+
+    $(function() {
+        $(".page-loader").hide();
+    });
 </script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
