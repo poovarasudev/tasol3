@@ -13,7 +13,7 @@
                 <div class="card-header">
                     <strong class="card-title">Update '{{ $notification->title }}'</strong>
                 </div>
-                @include('notifications.common_input_fields', ['btn' => 'Update', 'backUrl' => route('notifications.index')])
+                @include('admin.notifications.common_input_fields', ['btn' => 'Update', 'backUrl' => route('admin.notifications.index')])
             </form>
         </div>
     </div>

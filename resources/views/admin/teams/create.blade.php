@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <strong class="card-title">Create a New Team here</strong>
                 </div>
-                @include('teams.common_input_fields', ['team' => null, 'btn' => 'Create', 'backUrl' => route('teams.index')])
+                @include('admin.teams.common_input_fields', ['team' => null, 'btn' => 'Create', 'backUrl' => route('admin.teams.index')])
             </form>
         </div>
     </div>

@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <strong class="card-title">Create a New Menu here</strong>
                 </div>
-                @include('menus.common_input_fields', ['menu' => null, 'btn' => 'Create', 'backUrl' => route('menus.index')])
+                @include('admin.menus.common_input_fields', ['menu' => null, 'btn' => 'Create', 'backUrl' => route('admin.menus.index')])
             </form>
         </div>
     </div>

@@ -13,7 +13,7 @@
                 <div class="card-header">
                     <strong class="card-title">Update '{{ $menu->name }}'</strong>
                 </div>
-                @include('menus.common_input_fields', ['btn' => 'Update', 'backUrl' => route('menus.index')])
+                @include('admin.menus.common_input_fields', ['btn' => 'Update', 'backUrl' => route('admin.menus.index')])
             </form>
         </div>
     </div>

@@ -13,7 +13,7 @@
                 <div class="card-header">
                     <strong class="card-title">Update '{{ $team->name }}'</strong>
                 </div>
-                @include('teams.common_input_fields', ['btn' => 'Update', 'backUrl' => route('teams.index')])
+                @include('admin.teams.common_input_fields', ['btn' => 'Update', 'backUrl' => route('admin.teams.index')])
             </form>
         </div>
     </div>

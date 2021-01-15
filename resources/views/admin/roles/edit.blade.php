@@ -13,7 +13,7 @@
                 <div class="card-header">
                     <strong class="card-title">Update '{{ $role->name }}'</strong>
                 </div>
-                @include('roles.common_input_fields', ['btn' => 'Update', 'backUrl' => route('roles.index')])
+                @include('admin.roles.common_input_fields', ['btn' => 'Update', 'backUrl' => route('admin.roles.index')])
             </form>
         </div>
     </div>
