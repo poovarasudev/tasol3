@@ -91,4 +91,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::patch('{menuId}', [App\Http\Controllers\MenuController::class, 'update'])->name('menus.update')->middleware('can:menus.edit');
         Route::delete('{menuId}', [App\Http\Controllers\MenuController::class, 'destroy'])->name('menus.delete')->middleware('can:menus.delete');
     });
+
+    // Notifications CRUD
+    Route::group(['prefix' => 'notifications'], function () {
+        Route::get('', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications.index')->middleware('can:notifications.index');
+        Route::get('get-notifications', [App\Http\Controllers\NotificationController::class, 'getNotifications'])->name('notifications.datatable')->middleware('can:notifications.index');
+        Route::get('create', [App\Http\Controllers\NotificationController::class, 'create'])->name('notifications.create')->middleware('can:notifications.create');
+        Route::post('', [App\Http\Controllers\NotificationController::class, 'store'])->name('notifications.store')->middleware('can:notifications.create');
+        Route::get('{notificationId}', [App\Http\Controllers\NotificationController::class, 'show'])->name('notifications.show')->middleware('can:notifications.view');
+        Route::get('{notificationId}/edit', [App\Http\Controllers\NotificationController::class, 'edit'])->name('notifications.edit')->middleware('can:notifications.edit');
+        Route::patch('{notificationId}', [App\Http\Controllers\NotificationController::class, 'update'])->name('notifications.update')->middleware('can:notifications.edit');
+        Route::delete('{notificationId}', [App\Http\Controllers\NotificationController::class, 'destroy'])->name('notifications.delete')->middleware('can:notifications.delete');
+    });
 });

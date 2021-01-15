@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <strong class="card-title">Attach a Role to User</strong>
                 </div>
-                @include('assign_role.common_input_fields', ['user' => null, 'role' => null, 'oldRoleId' => old('role_id'), 'btn' => 'Attach', 'backUrl' => route('assign_role.index')])
+                @include('admin.assign_role.common_input_fields', ['user' => null, 'role' => null, 'oldRoleId' => old('role_id'), 'btn' => 'Attach', 'backUrl' => route('admin.assign_role.index')])
             </form>
         </div>
     </div>

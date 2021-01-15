@@ -8,7 +8,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class TeamController extends Controller
 {
-    public $baseViewDirectory = 'teams.';
+    public $baseViewDirectory = 'admin.teams.';
 
     /**
      * Display a listing of the resource.

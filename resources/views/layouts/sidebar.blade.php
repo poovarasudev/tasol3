@@ -82,6 +82,17 @@
             </ul>
         @endcan
 
+        @can('notifications.index')
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100 {{ setActive(['notifications', 'notifications/*']) }}">
+                    <a class="nav-link" href="{{ route('notifications.index') }}">
+                        <i class="fe fe-tag fe-16"></i>
+                        <span class="ml-3 item-text">Notifications</span>
+                    </a>
+                </li>
+            </ul>
+        @endcan
+
         <p class="text-muted nav-heading mt-4 mb-1"><span>Components</span></p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">

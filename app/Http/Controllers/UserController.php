@@ -11,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
-    public $baseViewDirectory = 'users.';
+    public $baseViewDirectory = 'admin.users.';
 
     /**
      * Display a listing of the resource.

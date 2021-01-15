@@ -27,3 +27,8 @@ function formatTeamName($teamName)
     }
     return $teamName;
 }
+
+function authNotificationReadedNow($teamName)
+{
+    auth()->user()->notificationReadAtNow();
+}

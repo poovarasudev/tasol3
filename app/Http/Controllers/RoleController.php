@@ -11,7 +11,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class RoleController extends Controller
 {
-    public $baseViewDirectory = 'roles.';
+    public $baseViewDirectory = 'admin.roles.';
 
     /**
      * Display a listing of the resource.
