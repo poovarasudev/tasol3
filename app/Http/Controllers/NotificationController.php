@@ -10,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class NotificationController extends Controller
 {
-    public $baseViewDirectory = 'notifications.';
+    public $baseViewDirectory = 'admin.notifications.';
 
     /**
      * Display a listing of the resource.

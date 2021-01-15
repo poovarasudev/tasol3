@@ -9,7 +9,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class AssignRoleController extends Controller
 {
-    public $baseViewDirectory = 'assign_role.';
+    public $baseViewDirectory = 'admin.assign_role.';
 
     /**
      * Display a listing of the resource.

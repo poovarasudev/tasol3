@@ -9,7 +9,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class MenuController extends Controller
 {
-    public $baseViewDirectory = 'menus.';
+    public $baseViewDirectory = 'admin.menus.';
 
     /**
      * Display a listing of the resource.
