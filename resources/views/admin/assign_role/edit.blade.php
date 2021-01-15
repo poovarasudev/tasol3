@@ -14,7 +14,7 @@
                     <strong class="card-title">Update '{{ $user->name }}'</strong>
                 </div>
                 @php $oldRoleId = old('role_id') ?? $user->roles->first()->id; @endphp
-                @include('admin.assign_role.common_input_fields', ['oldRoleId' => $oldRoleId, 'btn' => 'Update', 'backUrl' => route('admin.assign_role.index')])
+                @include('admin.assign_role.common_input_fields', ['oldRoleId' => $oldRoleId, 'btn' => 'Update', 'backUrl' => route('assign_role.index')])
             </form>
         </div>
     </div>

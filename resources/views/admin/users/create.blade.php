@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <strong class="card-title">Create a New User here</strong>
                 </div>
-                @include('admin.users.common_input_fields', ['user' => null, 'btn' => 'Create', 'backUrl' => route('admin.users.index')])
+                @include('admin.users.common_input_fields', ['user' => null, 'btn' => 'Create', 'backUrl' => route('users.index')])
             </form>
         </div>
     </div>

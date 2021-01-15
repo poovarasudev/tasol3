@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <strong class="card-title">Create a New Notification here</strong>
                 </div>
-                @include('admin.notifications.common_input_fields', ['notification' => null, 'btn' => 'Create', 'backUrl' => route('admin.notifications.index')])
+                @include('admin.notifications.common_input_fields', ['notification' => null, 'btn' => 'Create', 'backUrl' => route('notifications.index')])
             </form>
         </div>
     </div>

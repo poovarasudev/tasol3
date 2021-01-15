@@ -12,7 +12,7 @@
                 <div class="card-header">
                     <strong class="card-title">Create a New Role here</strong>
                 </div>
-                @include('admin.roles.common_input_fields', ['role' => null, 'btn' => 'Create', 'backUrl' => route('admin.roles.index')])
+                @include('admin.roles.common_input_fields', ['role' => null, 'btn' => 'Create', 'backUrl' => route('roles.index')])
             </form>
         </div>
     </div>
