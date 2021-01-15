@@ -3,7 +3,11 @@
 use Illuminate\Support\HtmlString;
 
 function requiredSpan() {
-    return new HtmlString('<span class="mandatory" style="color: red;">*</span>');
+    return htmlString('<span class="mandatory" style="color: red;">*</span>');
+}
+
+function htmlString($html) {
+    return new HtmlString($html);
 }
 
 function getYesOrNoBadge($value) {

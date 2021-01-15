@@ -19,7 +19,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'phone', 'gender', 'image', 'breakfast', 'lunch', 'team_id'];
+    protected $fillable = ['name', 'email', 'password', 'phone', 'gender', 'image', 'breakfast', 'lunch', 'team_id',
+        'notification_read_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,7 +39,21 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'notification_read_at' => 'datetime',
     ];
+
+    /**
+     * Bootstrap the model and its traits.
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($user) {
+            $user->notification_read_at = now();
+        });
+    }
 
     /**
      * Check the user is super admin.
@@ -87,5 +102,15 @@ class User extends Authenticatable
     public static function getUsersWithCreateNewUserPermissions()
     {
         return self::with('team')->role(SUPER_ADMIN_ROLE)->get();
+    }
+
+    /**
+     * Update notification_read_at column to now.
+     *
+     * @return bool
+     */
+    public function notificationReadAtNow()
+    {
+        return $this->update(['notification_read_at' => now()]);
     }
 }

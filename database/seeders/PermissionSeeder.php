@@ -45,6 +45,13 @@ class PermissionSeeder extends Seeder
             ['name' => 'menus.create', 'group' => PERMISSION_GROUP_MENU, 'guard_name' => 'web'],
             ['name' => 'menus.edit', 'group' => PERMISSION_GROUP_MENU, 'guard_name' => 'web'],
             ['name' => 'menus.delete', 'group' => PERMISSION_GROUP_MENU, 'guard_name' => 'web'],
+
+            // Notification CURD
+            ['name' => 'notifications.index', 'group' => PERMISSION_GROUP_NOTIFICATION, 'guard_name' => 'web'],
+            ['name' => 'notifications.view', 'group' => PERMISSION_GROUP_NOTIFICATION, 'guard_name' => 'web'],
+            ['name' => 'notifications.create', 'group' => PERMISSION_GROUP_NOTIFICATION, 'guard_name' => 'web'],
+            ['name' => 'notifications.edit', 'group' => PERMISSION_GROUP_NOTIFICATION, 'guard_name' => 'web'],
+            ['name' => 'notifications.delete', 'group' => PERMISSION_GROUP_NOTIFICATION, 'guard_name' => 'web'],
         ];
 
         foreach ($permissions as $permission) {

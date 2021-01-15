@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app-dark.css') }}" id="darkTheme" disabled>
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ asset('assets/custom/custom-styles.css') }}" type="text/css">
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 </head>
 <body class="vertical  light  ">
 <div class="wrapper">

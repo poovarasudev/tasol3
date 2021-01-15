@@ -19,6 +19,7 @@ define('PERMISSION_GROUP_TEAM', 'Team');
 define('PERMISSION_GROUP_ROLE', 'Role');
 define('PERMISSION_GROUP_ASSIGN_ROLE', 'Assign Role');
 define('PERMISSION_GROUP_MENU', 'Menu');
+define('PERMISSION_GROUP_NOTIFICATION', 'Notification');
 
 // Menu Type
 define('TEAM_GUEST', 'Guest');
@@ -32,3 +33,8 @@ define('BILL_TYPE_EQUALLY_DIVIDED', 'Equally Divided');
 // Menu Types
 define('ORDER_TYPE_SINGLE', 'Single');
 define('ORDER_TYPE_MULTIPLE', 'Multiple');
+
+// Notification Types
+// General is used as default in notifications table
+define('NOTIFICATION_TYPE_GENERAL', 'General');
+define('NOTIFICATION_TYPE_INDIVIDUAL', 'Individual');
