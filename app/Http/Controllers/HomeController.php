@@ -69,14 +69,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getProfileNotifications()
+    public function getProfileNotifications(Request $request)
     {
-        authNotificationReadedNow();
+        $notification = $notifications = null;
         $page = 'notifications';
-        $notifications = Notification::where(function ($query) {
-            $query->whereNull('user_ids')
-                ->orWhereJsonContains('user_ids', (string)auth()->id());
-        })->latest()->limit(MAXIMUM_NOTIFICATION_COUNT_IN_NOTIFICATION_PAGE)->get();
-        return view('profile_pages.index', compact('page', 'notifications'));
+        if ($request->has('notification_id')) {
+            $notification = Notification::findOrFail($request->get('notification_id'));
+        } else {
+            authNotificationReadedNow();
+            $notifications = Notification::where(function ($query) {
+                $query->whereNull('user_ids')->orWhereJsonContains('user_ids', (string)auth()->id());
+            })->latest()->paginate(MAXIMUM_NOTIFICATION_COUNT_IN_NOTIFICATION_PAGE);
+        }
+        return view('profile_pages.index', compact('page', 'notification', 'notifications'));
     }
 }

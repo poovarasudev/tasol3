@@ -18,7 +18,7 @@ class CreateNotificationsTable extends Migration
             $table->string('title');
             $table->string('type')->default(NOTIFICATION_TYPE_GENERAL);
             $table->string('short_description');
-            $table->text('description');
+            $table->text('description')->default(DEFAULT_NOTIFICATION_DESCRIPTION);
             $table->json('user_ids')->nullable();
             $table->timestamps();
             $table->softDeletes();

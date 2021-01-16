@@ -37,7 +37,9 @@ define('BILL_TYPE_EQUALLY_DIVIDED', 'Equally Divided');
 define('ORDER_TYPE_SINGLE', 'Single');
 define('ORDER_TYPE_MULTIPLE', 'Multiple');
 
-// Notification Types
+// Notification
+define('DEFAULT_NOTIFICATION_DESCRIPTION', '<p>-</p>');
+
 // General is used as default in notifications table
 define('NOTIFICATION_TYPE_GENERAL', 'General');
 define('NOTIFICATION_TYPE_INDIVIDUAL', 'Individual');

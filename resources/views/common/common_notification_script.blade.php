@@ -36,8 +36,9 @@
                     $.each(response.data, function(index, notification) {
                         $('.list-group-flush').append('<div class="list-group-item bg-transparent"><div class="row align-items-center">' +
                             '<div class="col-auto"><span class="fe ' + notification.icon + ' fe-24"></span></div><div class="col"><small>' +
-                            '<strong>' + notification.title + '</strong></small><div class="my-0 text-muted small">' + notification.short_description + '</div>' +
-                            '<small class="badge badge-pill badge-light text-muted">' + notification.human_readable_time + '</small></div> </div></div>');
+                            '<strong><a href="/profile/notifications?notification_id=' + notification.id + '">' + notification.title + '</a></strong></small>' +
+                            '<div class="my-0 text-muted small">' + notification.short_description + '</div>' +
+                            '<small class="badge badge-pill badge-light text-muted">' + notification.human_readable_time + '</small></div></div></div>');
                     });
                 } else {
                     $('.list-group-flush').append('<div class="list-group-item bg-transparent"><b>No New Notifications Available</b></div>');

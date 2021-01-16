@@ -47,9 +47,13 @@ class NotificationController extends Controller
             if ($userIds && !isEmptyArray($userIds)) {
                 $input['user_ids'] = $userIds;
             }
+            if (!$input['description']) {
+                unset($input['description']);
+            }
             Notification::create($input);
             return redirect('/notifications')->with('success', 'Notification Send Successfully!');
         } catch (\Throwable $exception) {
+            info($exception->getMessage());
             return redirect('/notifications')->with('error', 'Unable to Send Notification!');
         }
     }
@@ -94,6 +98,9 @@ class NotificationController extends Controller
             $input = $request->only('title', 'short_description', 'description');
             $userIds = $request->get('user_ids');
             $input['user_ids'] = ($userIds && !isEmptyArray($userIds)) ? $userIds : null;
+            if (!$input['description']) {
+                unset($input['description']);
+            }
             $notification->update($input);
             return redirect('/notifications')->with('success', 'Notification Updated Successfully!');
         } catch (\Throwable $exception) {
@@ -127,7 +134,7 @@ class NotificationController extends Controller
      */
     public function getNotifications(Request $request)
     {
-        return DataTables::eloquent(Notification::whereType(NOTIFICATION_TYPE_GENERAL))
+        return DataTables::eloquent(Notification::whereType(NOTIFICATION_TYPE_GENERAL)->latest())
             ->editColumn('users_count', function ($notification) {
                 return $notification->user_ids ? count($notification->user_ids) : 'All';
             })
