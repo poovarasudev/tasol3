@@ -153,7 +153,7 @@ class NotificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getUserNotifications()
+    public function getSideBarNotifications()
     {
         try {
             $notifications = Notification::where('created_at', '>=', auth()->user()->notification_read_at)->where(function ($query) {

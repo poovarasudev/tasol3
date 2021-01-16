@@ -73,7 +73,10 @@ class HomeController extends Controller
     {
         authNotificationReadedNow();
         $page = 'notifications';
-        $notifications = Notification::orderBy('id', 'DESC')->paginate(MAXIMUM_NOTIFICATION_COUNT_IN_NOTIFICATION_PAGE);
+        $notifications = Notification::where(function ($query) {
+            $query->whereNull('user_ids')
+                ->orWhereJsonContains('user_ids', (string)auth()->id());
+        })->latest()->limit(MAXIMUM_NOTIFICATION_COUNT_IN_NOTIFICATION_PAGE)->get();
         return view('profile_pages.index', compact('page', 'notifications'));
     }
 }

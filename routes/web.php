@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
     // General Routes
     Route::view('profile', 'profile_pages.index', ['page' => 'profile'])->name('profile.show');
     Route::post('profile', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.update');
-    Route::get('get-user-notifications', [App\Http\Controllers\NotificationController::class, 'getUserNotifications'])->name('get.notifications');
+    Route::get('get-user-notifications', [App\Http\Controllers\NotificationController::class, 'getSideBarNotifications'])->name('get.notifications');
     Route::get('profile/notifications', [App\Http\Controllers\HomeController::class, 'getProfileNotifications'])->name('profile.notifications');
 
     // Users CRUD
