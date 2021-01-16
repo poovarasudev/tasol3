@@ -138,6 +138,12 @@ class NotificationController extends Controller
             ->editColumn('users_count', function ($notification) {
                 return $notification->user_ids ? count($notification->user_ids) : 'All';
             })
+            ->editColumn('short_description', function ($notification) {
+                if (strlen($notification->short_description) > 55) {
+                    return substr($notification->short_description,0,50) . '.....';
+                }
+                return $notification->short_description;
+            })
             ->addColumn('action', function ($notification) {
                 $buttons = '';
                 if (auth()->user()->can('notifications.view')) {
