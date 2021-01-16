@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -61,5 +62,18 @@ class HomeController extends Controller
         } catch (\Throwable $exception) {
             return redirect('/profile')->with('error', 'Error while updating Profile!');
         }
+    }
+
+    /**
+     * Get list of notifications in profile.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getProfileNotifications()
+    {
+        authNotificationReadedNow();
+        $page = 'notifications';
+        $notifications = Notification::orderBy('id', 'DESC')->paginate(MAXIMUM_NOTIFICATION_COUNT_IN_NOTIFICATION_PAGE);
+        return view('profile_pages.index', compact('page', 'notifications'));
     }
 }

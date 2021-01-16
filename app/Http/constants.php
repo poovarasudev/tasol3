@@ -1,5 +1,8 @@
 <?php
 
+// DateTime Formats
+define('DATE_TIME_FORMAT_TWELVE_HOURS', 'd.m.Y h:i A');
+
 // General
 define('COPYRIGHT_NAME', 'Poovarasu');
 
@@ -38,3 +41,7 @@ define('ORDER_TYPE_MULTIPLE', 'Multiple');
 // General is used as default in notifications table
 define('NOTIFICATION_TYPE_GENERAL', 'General');
 define('NOTIFICATION_TYPE_INDIVIDUAL', 'Individual');
+
+// Max number of notifications
+define('MAXIMUM_NOTIFICATION_COUNT_IN_SIDEBAR', 7);
+define('MAXIMUM_NOTIFICATION_COUNT_IN_NOTIFICATION_PAGE', 5);

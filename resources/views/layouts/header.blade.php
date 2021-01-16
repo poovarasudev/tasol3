@@ -17,7 +17,7 @@
             </a>
         </li>
         <li class="nav-item nav-notif">
-            <a class="nav-link text-muted my-2" href="..#" data-toggle="modal" data-target=".modal-notif">
+            <a class="nav-link text-muted my-2" href="javascript:void(0);" onclick="showNotifications()">
                 <span class="fe fe-bell fe-16"></span>
                 <span class="dot dot-md bg-success"></span>
             </a>
@@ -30,7 +30,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a>
-                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="{{ route('profile.notifications') }}">Notifications</a>
                 <a class="dropdown-item" href="#">Activities</a>
             </div>
         </li>

@@ -147,4 +147,23 @@ class NotificationController extends Controller
             })
             ->make(true);
     }
+
+    /**
+     * Get list of notifications for the logged in user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getUserNotifications()
+    {
+        try {
+            $notifications = Notification::where('created_at', '>=', auth()->user()->notification_read_at)->where(function ($query) {
+                $query->whereNull('user_ids')
+                    ->orWhereJsonContains('user_ids', (string)auth()->id());
+            })->latest()->limit(MAXIMUM_NOTIFICATION_COUNT_IN_SIDEBAR)->get();
+            authNotificationReadedNow();
+            return response()->json(['action' => 'success', 'data' => $notifications]);
+        } catch (\Throwable $exception) {
+            return response()->json(['action' => 'error', 'message' => 'Unable to get Notifications!'], 500);
+        }
+    }
 }
