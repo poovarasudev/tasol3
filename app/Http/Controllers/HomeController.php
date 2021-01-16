@@ -83,4 +83,15 @@ class HomeController extends Controller
         }
         return view('profile_pages.index', compact('page', 'notification', 'notifications'));
     }
+
+    /**
+     * Get list of users for contacts page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getContacts()
+    {
+        $contacts = User::with('team')->paginate(8);
+        return view('contacts', compact('contacts'));
+    }
 }
