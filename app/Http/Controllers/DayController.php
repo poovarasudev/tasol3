@@ -58,6 +58,12 @@ class DayController extends Controller
             ->make('true');
     }
 
+    /**
+     * Returns the buttons needed for food column.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public static function getFoodColumns($id, $type, $yesOrNo) {
         $buttons = $yesOrNo ? '<button class="btn badge-success btn-sm">Yes</button>' : '<button class="btn badge-danger btn-sm">No</button>';
         if (auth()->user()->can('days.update')) {
