@@ -12,7 +12,7 @@
                     $(".page-loader").show();
                     $.ajax({
                         url: url,
-                        method: 'delete',
+                        method: 'DELETE',
                         data: {
                             '_token': '{{ csrf_token() }}'
                         },

@@ -52,6 +52,10 @@ class PermissionSeeder extends Seeder
             ['name' => 'notifications.create', 'group' => PERMISSION_GROUP_NOTIFICATION, 'guard_name' => 'web'],
             ['name' => 'notifications.edit', 'group' => PERMISSION_GROUP_NOTIFICATION, 'guard_name' => 'web'],
             ['name' => 'notifications.delete', 'group' => PERMISSION_GROUP_NOTIFICATION, 'guard_name' => 'web'],
+
+            // Days
+            ['name' => 'days.index', 'group' => PERMISSION_GROUP_DAY, 'guard_name' => 'web'],
+            ['name' => 'days.edit', 'group' => PERMISSION_GROUP_DAY, 'guard_name' => 'web'],
         ];
 
         foreach ($permissions as $permission) {

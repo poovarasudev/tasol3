@@ -106,4 +106,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::patch('{notificationId}', [App\Http\Controllers\NotificationController::class, 'update'])->name('notifications.update')->middleware('can:notifications.edit');
         Route::delete('{notificationId}', [App\Http\Controllers\NotificationController::class, 'destroy'])->name('notifications.delete')->middleware('can:notifications.delete');
     });
+
+    // Days
+    Route::group(['prefix' => 'days'], function () {
+        Route::get('', [App\Http\Controllers\DayController::class, 'index'])->name('days.index')->middleware('can:days.index');
+        Route::get('get-notifications', [App\Http\Controllers\DayController::class, 'getDays'])->name('days.datatable')->middleware('can:days.index');
+        Route::patch('{dayId}', [App\Http\Controllers\DayController::class, 'update'])->name('days.update')->middleware('can:days.edit');
+    });
 });

@@ -93,6 +93,17 @@
             </ul>
         @endcan
 
+        @can('days.index')
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item w-100 {{ setActive(['days', 'days/*']) }}">
+                    <a class="nav-link" href="{{ route('days.index') }}">
+                        <i class="fe fe-tag fe-16"></i>
+                        <span class="ml-3 item-text">Days</span>
+                    </a>
+                </li>
+            </ul>
+        @endcan
+
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100 {{ setActive(['profile', 'profile/*']) }}">
                 <a class="nav-link" href="{{ route('profile.show') }}">
